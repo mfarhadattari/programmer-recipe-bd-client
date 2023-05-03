@@ -57,6 +57,19 @@ const Login = () => {
           </div>
         </form>
       </div>
+      <h3 className="text-center font-medium font-pacifico mt-5">Social Login</h3>
+      <div className="w-3/4 mx-auto p-5 border rounded-lg mt-5 ">
+        <div className="font-semibold text-lg mt-5">
+          <button className="bg-slate-600 text-white rounded-md w-full py-2 px-5">
+            Sign In with Google
+          </button>
+        </div>
+        <div className="font-semibold text-lg mt-5">
+          <button className="bg-cyan-600 text-white rounded-md w-full py-2 px-5">
+            Sign In with Github
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

@@ -4,8 +4,8 @@ import { FaUser, FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <nav className="px-20 font-semibold flex justify-between items-center bg-pink-600 text-white py-10">
-      <div className="text-2xl">
+    <nav className="px-20 font-semibold flex justify-between items-center bg-pink-600 text-white py-10 sticky top-0 z-50">
+      <div className="text-2xl font-pacifico">
           Programmer Recife BD
       </div>
       <div className="flex items-center gap-5 text-xl">
