@@ -33,6 +33,7 @@ const Registration = () => {
               type="email"
               name="email"
               placeholder="Your Email"
+              required
             />
           </div>
           <div className="font-semibold text-lg mb-5 relative">
@@ -42,6 +43,7 @@ const Registration = () => {
               name="password"
               placeholder="Your Password"
               ref={passwordRef}
+              required
             />
             <div
               className="absolute top-3 right-3 text-2xl"
