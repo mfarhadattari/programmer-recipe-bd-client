@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login/Login";
 import Registration from "../pages/Login/Registration/Registration";
 import Blog from "../pages/Home/Blog/Blog";
+import Chef from "../pages/chefs/Chef/Chef";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "/chef/:id",
+        element: <Chef></Chef>,
+        loader: ({ params }) =>
+          fetch(
+            `https://programmar-recipe-bd-server.vercel.app/chef/${params.id}`
+          ),
       },
     ],
   },
