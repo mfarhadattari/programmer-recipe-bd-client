@@ -40,7 +40,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/chef/:id",
-        element: <Chef></Chef>,
+        element: (
+          <PrivateRoute>
+            <Chef></Chef>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://programmar-recipe-bd-server.vercel.app/chef/${params.id}`
