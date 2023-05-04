@@ -1,10 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Login = () => {
   const passwordRef = useRef();
   const [passwordShow, setPasswordShow] = useState(false);
+
+  const { loginWithGoogle, loginWithGithub } = useContext(AuthContext);
 
   const handelPasswordShow = () => {
     setPasswordShow(!passwordShow);
@@ -14,6 +17,27 @@ const Login = () => {
       passwordRef.current.type = "password";
     }
   };
+
+  const handelGithubLogin = () => {
+    loginWithGithub()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
+
+  const handelGoogleLogin = () => {
+    loginWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
+
   return (
     <div className="mt-10 w-[500px] mx-auto">
       <div className="w-3/4 mx-auto p-5 border rounded-lg">
@@ -64,12 +88,18 @@ const Login = () => {
       </h3>
       <div className="w-3/4 mx-auto p-5 border rounded-lg mt-5 ">
         <div className="font-semibold text-lg mt-5">
-          <button className="bg-slate-600 text-white rounded-md w-full py-2 px-5 flex gap-5 justify-center items-center">
+          <button
+            className="bg-slate-600 text-white rounded-md w-full py-2 px-5 flex gap-5 justify-center items-center"
+            onClick={handelGoogleLogin}
+          >
             <FaGoogle></FaGoogle> Sign In with Google
           </button>
         </div>
         <div className="font-semibold text-lg mt-5">
-          <button className="bg-cyan-600 text-white rounded-md w-full py-2 px-5 flex gap-5 justify-center items-center">
+          <button
+            className="bg-cyan-600 text-white rounded-md w-full py-2 px-5 flex gap-5 justify-center items-center"
+            onClick={handelGithubLogin}
+          >
             <FaGithub></FaGithub>
             Sign In with Github
           </button>
