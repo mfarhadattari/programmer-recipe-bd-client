@@ -1,10 +1,14 @@
-import React from "react";
-import { useLoaderData } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { useLoaderData, useNavigation } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
+import Loader from "../../../components/Loader/Loader";
 
 const Chef = () => {
   const chef = useLoaderData();
-  console.log(chef)
-  return <div></div>;
+  const navigation = useNavigation();
+  console.log(navigation.state, chef);
+
+  return;
 };
 
 export default Chef;
