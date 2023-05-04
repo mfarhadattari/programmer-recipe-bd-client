@@ -16,7 +16,7 @@ const Header = () => {
       });
   };
   return (
-    <nav className="px-20 font-semibold flex justify-between items-center bg-pink-600 text-white py-10 sticky top-0 z-50">
+    <nav className="md:px-20 font-semibold flex flex-col md:flex-row justify-between items-center bg-pink-600 text-white py-10 sticky top-0 z-50">
       <div className="text-2xl font-pacifico">Programmer Recife BD</div>
       <div className="flex items-center gap-5 text-xl">
         <NavigationLink to="/">Home</NavigationLink>

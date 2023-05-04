@@ -62,7 +62,7 @@ const Registration = () => {
       });
   };
   return (
-    <div className="w-[500px] mx-auto mt-10">
+    <div className="md:w-[500px] mx-auto mt-10">
       {/* message section */}
       <div>
         {successMessage && (

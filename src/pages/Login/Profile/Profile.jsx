@@ -5,9 +5,9 @@ import { FaEnvelope, FaIdBadge, FaUser, FaUserCircle } from "react-icons/fa";
 const Profile = () => {
   const { user } = useContext(AuthContext);
   return (
-    <div className="container mt-20 mx-auto">
+    <div className="container mt-20 mx-auto p-5">
       <h1 className="text-center text-4xl font-pacifico">User Profile</h1>
-      <div className="w-1/2 mx-auto mt-20 flex justify-around items-center">
+      <div className="w-full md:w-1/2 mx-auto mt-20 md:flex justify-around items-center">
         <div>
           {user?.photoURL ? (
             <div className="avatar">

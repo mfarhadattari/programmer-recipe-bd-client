@@ -106,7 +106,7 @@ const Login = () => {
   };
 
   return (
-    <div className="mt-10 w-[500px] mx-auto">
+    <div className="mt-10 md:w-[500px] mx-auto">
       {/* message section */}
       <div>
         {successMessage && (
