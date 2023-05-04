@@ -23,8 +23,12 @@ const Header = () => {
         <NavigationLink to="/blog">Blog</NavigationLink>
 
         {user ? (
-          <div className="flex items-center gap-5" title={user?.displayName}>
-            <Link to="/profile">
+          <div className="flex items-center gap-5">
+            <Link
+              to="/profile"
+              className="tooltip tooltip-bottom tooltip-info"
+              data-tip={user?.displayName}
+            >
               {user?.photoURL ? (
                 <div className="avatar">
                   <div className="w-10 rounded-full">

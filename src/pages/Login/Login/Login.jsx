@@ -1,10 +1,15 @@
 import React, { useContext, useRef, useState } from "react";
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Login = () => {
   const passwordRef = useRef();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const redirectFrom = location?.state?.pathname;
+  console.log(redirectFrom);
 
   /* ------------ message state --------------- */
   const [successMessage, setSuccessMessage] = useState("");
@@ -34,6 +39,11 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         setSuccessMessage("Login Successful");
+        if (redirectFrom) {
+          navigate(redirectFrom, { replace: true });
+        } else {
+          navigate("/");
+        }
       })
       .catch((error) => {
         console.error(error.message);
@@ -50,6 +60,11 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         setSuccessMessage("Login Successful");
+        if (redirectFrom) {
+          navigate(redirectFrom, { replace: true });
+        } else {
+          navigate("/");
+        }
       })
       .catch((error) => {
         console.error(error.message);
@@ -78,6 +93,11 @@ const Login = () => {
         console.log(result.user);
         setSuccessMessage("Login Successful");
         form.reset();
+        if (redirectFrom) {
+          navigate(redirectFrom, { replace: true });
+        } else {
+          navigate("/");
+        }
       })
       .catch((error) => {
         console.error(error.message);
