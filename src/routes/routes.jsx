@@ -7,6 +7,7 @@ import Blog from "../pages/Home/Blog/Blog";
 import Chef from "../pages/chefs/Chef/Chef";
 import Profile from "../pages/Login/Profile/Profile";
 import PrivateRoute from "./privateRoute";
+import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blog",
@@ -40,6 +45,10 @@ const router = createBrowserRouter([
           fetch(
             `https://programmar-recipe-bd-server.vercel.app/chef/${params.id}`
           ),
+      },
+      {
+        path: "*",
+        element: <ErrorPage></ErrorPage>,
       },
     ],
   },
