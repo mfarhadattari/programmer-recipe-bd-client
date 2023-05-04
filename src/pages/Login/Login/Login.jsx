@@ -5,10 +5,17 @@ import { AuthContext } from "../../../provider/AuthProvider";
 
 const Login = () => {
   const passwordRef = useRef();
+
+  /* ------------ message state --------------- */
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  /* ---------- data from context -------------- */
+  const { loginUser, loginWithGoogle, loginWithGithub } =
+    useContext(AuthContext);
+
+  /* ------- password show handler -------------- */
   const [passwordShow, setPasswordShow] = useState(false);
-
-  const { loginWithGoogle, loginWithGithub } = useContext(AuthContext);
-
   const handelPasswordShow = () => {
     setPasswordShow(!passwordShow);
     if (!passwordShow) {
@@ -18,31 +25,86 @@ const Login = () => {
     }
   };
 
+  /* ------------ github login handler ------------- */
   const handelGithubLogin = () => {
+    // reset message
+    setErrorMessage("");
+    setSuccessMessage("");
     loginWithGithub()
       .then((result) => {
         console.log(result.user);
+        setSuccessMessage("Login Successful");
       })
       .catch((error) => {
         console.error(error.message);
+        setErrorMessage(error.message);
       });
   };
 
+  /*-------------- google login handler -------------  */
   const handelGoogleLogin = () => {
+    // reset message
+    setErrorMessage("");
+    setSuccessMessage("");
     loginWithGoogle()
       .then((result) => {
         console.log(result.user);
+        setSuccessMessage("Login Successful");
       })
       .catch((error) => {
         console.error(error.message);
+        setErrorMessage(error.message);
+      });
+  };
+
+  /* -------------- email password login form handler------ */
+  const handelSubmitLogin = (event) => {
+    // stop page reload
+    event.preventDefault();
+
+    // reset massage
+    setErrorMessage("");
+    setSuccessMessage("");
+
+    // get form data
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    // console.log(email , password);
+
+    // login user
+    loginUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        setSuccessMessage("Login Successful");
+        form.reset();
+      })
+      .catch((error) => {
+        console.error(error.message);
+        setErrorMessage(error.message);
       });
   };
 
   return (
     <div className="mt-10 w-[500px] mx-auto">
+      {/* message section */}
+      <div>
+        {successMessage && (
+          <p className="text-green-600 px-5 py-3 border border-green-600 text-center text-xl my-5">
+            {successMessage}
+          </p>
+        )}
+        {errorMessage && (
+          <p className="text-red-600 px-5 py-3 border border-red-600 text-center text-xl my-5">
+            {errorMessage}
+          </p>
+        )}
+      </div>
+
+      {/* Login form section */}
       <div className="w-3/4 mx-auto p-5 border rounded-lg">
         <h3 className="text-center text-xl font-semibold">Login Please</h3>
-        <form className="my-5">
+        <form className="my-5" onSubmit={handelSubmitLogin}>
           <div className="font-semibold text-lg mb-5">
             <input
               className="border border-blue-700 outline-blue-700 rounded-md w-full py-2 px-5"
@@ -83,6 +145,8 @@ const Login = () => {
           </div>
         </form>
       </div>
+
+      {/* social login section */}
       <h3 className="text-center font-medium font-pacifico mt-5">
         Social Login
       </h3>

@@ -5,10 +5,12 @@ import Loader from "../../../components/Loader/Loader";
 
 const Chef = () => {
   const chef = useLoaderData();
-  const navigation = useNavigation();
-  console.log(navigation.state, chef);
-
-  return;
+  console.log(chef);
+  return (
+    <div>
+      
+    </div>
+  );
 };
 
 export default Chef;
