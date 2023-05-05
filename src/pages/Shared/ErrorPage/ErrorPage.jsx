@@ -11,7 +11,7 @@ const ErrorPage = () => {
         <p className="text-gray-600 mb-6">
           We're sorry, the page you're looking for could not be found.
         </p>
-        <button className="btn btn-warning"><Link to='/'>Back to home</Link></button>
+        <Link  className="btn btn-warning" to='/'>Back to home</Link>
       </div>
     </div>
   );

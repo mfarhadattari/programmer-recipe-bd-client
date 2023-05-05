@@ -34,9 +34,9 @@ const ChefCard = ({ chef }) => {
             <FaThumbsUp></FaThumbsUp>
             {likes}
           </p>
-          <button className="btn btn-primary">
-            <Link to={`chef/${chef_id}`}>View Recipes</Link>
-          </button>
+          <Link className="btn btn-primary" to={`chef/${chef_id}`}>
+            View Recipes
+          </Link>
         </div>
       </div>
     </div>
