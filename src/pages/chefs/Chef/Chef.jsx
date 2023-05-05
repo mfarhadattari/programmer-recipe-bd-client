@@ -3,25 +3,27 @@ import { useLoaderData, useNavigation } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Loader from "../../../components/Loader/Loader";
 import { FaThumbsUp } from "react-icons/fa";
+import RecipeCard from "../RecipeCard/RecipeCard";
 
 const Chef = () => {
   const chef = useLoaderData();
-  const { chefInfo, recipe } = chef;
-  console.log(chefInfo);
+  const { chefInfo, recipes } = chef;
   return (
-    <section className="container mx-auto mt-10">
-      <div className="grid md:grid-cols-3 justify-center items-center">
+    <main className="container mx-auto mt-10">
+      <section className="grid md:grid-cols-3 gap-5 justify-center items-center p-5">
         <div>
           <img
             src={chefInfo?.chef_avatar}
             alt={chefInfo?.chefName}
-            className="h-[300px] w-[300px] rounded-lg "
+            className="md:h-[300px] w-full md:w-[300px] rounded-lg "
           />
         </div>
         <div className="col-span-2">
-          <h1 className="text-3xl font-medium">{chefInfo.chefName}</h1>
+          <h1 className="text-3xl font-medium my-3">{chefInfo.chefName}</h1>
           <p className="my-2 text-xl text-justify">{chefInfo.about}</p>
-          <p className="my-2 font-bold text-lg">Experience: {chefInfo.experience}</p>
+          <p className="my-2 font-bold text-lg">
+            Experience: {chefInfo.experience}
+          </p>
           <p className="flex gap-10 text-lg font-medium">
             <span className="flex gap-2 items-center">
               <FaThumbsUp></FaThumbsUp>
@@ -30,8 +32,18 @@ const Chef = () => {
             <span>Recipe: {chefInfo.num_of_recipes}</span>
           </p>
         </div>
-      </div>
-    </section>
+      </section>
+      <section className="mt-40 p-5">
+        <h1 className="text-3xl text-center font-pacifico font-semibold my-10">
+          Recipe of Chef
+        </h1>
+        <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 mx-auto">
+          {recipes.map((recipe) => (
+            <RecipeCard key={recipe.food_id} recipe={recipe}></RecipeCard>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 };
 

@@ -17,4 +17,5 @@
     - React Icon .
     - Tailwind and Daisy Ui .
     - React Spinners .
+    - React Rating .
     - Google Font .
