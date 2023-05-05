@@ -3,12 +3,12 @@ import Main from "../layout/Main";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login/Login";
 import Registration from "../pages/Login/Registration/Registration";
-import Blog from "../pages/Home/Blog/Blog";
 import Chef from "../pages/chefs/Chef/Chef";
 import Profile from "../pages/Login/Profile/Profile";
 import PrivateRoute from "./privateRoute";
 import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 import RecipeDetails from "../pages/chefs/RecipeDetails/RecipeDetails";
+import Blogs from "../pages/Home/Blogs/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +37,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        element: <Blog></Blog>,
+        element: <Blogs></Blogs>,
+        loader: () =>
+          fetch("https://programmar-recipe-bd-server.vercel.app/blogs"),
       },
       {
         path: "/chef/:id",
