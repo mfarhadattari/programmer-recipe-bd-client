@@ -44,7 +44,7 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.error(error.message);
+        // console.error(error.message);
         setErrorMessage(error.message);
       });
   };
@@ -64,7 +64,7 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.error(error.message);
+        // console.error(error.message);
         setErrorMessage(error.message);
       });
   };
@@ -95,7 +95,7 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.error(error.message);
+        // console.error(error.message);
         if (error.message === "Firebase: Error (auth/wrong-password).") {
           setErrorMessage("Wrong Password! Please try again.");
         } else if (error.message === "Firebase: Error (auth/user-not-found).") {

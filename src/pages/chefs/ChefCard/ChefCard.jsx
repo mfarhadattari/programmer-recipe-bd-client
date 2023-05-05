@@ -27,7 +27,7 @@ const ChefCard = ({ chef }) => {
       <div className="card-body">
         <h2 className="card-title">{chefName}</h2>
         <p>Experience: {experience}</p>
-        <p>Total Recife: {num_of_recipes}</p>
+        <p>Total Recipe: {num_of_recipes}</p>
 
         <div className="card-actions items-center">
           <p className="flex items-center gap-1">

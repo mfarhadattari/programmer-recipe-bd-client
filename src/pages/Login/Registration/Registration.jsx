@@ -60,7 +60,7 @@ const Registration = () => {
         logOutUser();
       })
       .catch((error) => {
-        console.error(error.message);
+        // console.error(error.message);
         if (error.message === "Firebase: Error (auth/email-already-in-use).") {
           setErrorMessage("This Email Already Used!");
           return;

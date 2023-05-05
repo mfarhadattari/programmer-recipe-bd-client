@@ -20,6 +20,7 @@
 - React Rating .
 - React Hot Toast.
 - React Lazy Load .
+- React To PDF .
 - Google Font .
 
 ### Link of Server Data:
@@ -28,3 +29,4 @@
 - Recipe by id: https://programmar-recipe-bd-server.vercel.app/recipe/${recipe-id}
 - All chefs: https://programmar-recipe-bd-server.vercel.app/chefs
 - Chef Info and Recipes by chef id: https://programmar-recipe-bd-server.vercel.app/chef/${chef-id}
+- Blogs:  https://programmar-recipe-bd-server.vercel.app/blogs
