@@ -9,7 +9,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const redirectFrom = location?.state?.pathname;
-  console.log(redirectFrom);
 
   /* ------------ message state --------------- */
   const [successMessage, setSuccessMessage] = useState("");
@@ -37,7 +36,6 @@ const Login = () => {
     setSuccessMessage("");
     loginWithGithub()
       .then((result) => {
-        console.log(result.user);
         setSuccessMessage("Login Successful");
         if (redirectFrom) {
           navigate(redirectFrom, { replace: true });
@@ -58,7 +56,6 @@ const Login = () => {
     setSuccessMessage("");
     loginWithGoogle()
       .then((result) => {
-        console.log(result.user);
         setSuccessMessage("Login Successful");
         if (redirectFrom) {
           navigate(redirectFrom, { replace: true });
@@ -85,12 +82,10 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(email , password);
 
     // login user
     loginUser(email, password)
       .then((result) => {
-        console.log(result.user);
         setSuccessMessage("Login Successful");
         form.reset();
         if (redirectFrom) {

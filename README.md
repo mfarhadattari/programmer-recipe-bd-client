@@ -18,4 +18,6 @@
     - Tailwind and Daisy Ui .
     - React Spinners .
     - React Rating .
+    - React Hot Toast.
+    - React Lazy Load .
     - Google Font .

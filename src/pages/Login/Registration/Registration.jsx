@@ -51,7 +51,6 @@ const Registration = () => {
         if (photoUrl) {
           addUserAvatar(photoUrl);
         }
-        console.log(result.user);
         setSuccessMessage("Register Successful");
         form.reset();
         logOutUser();

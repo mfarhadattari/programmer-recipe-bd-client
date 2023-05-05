@@ -3,13 +3,15 @@ import NavigationLink from "../../../components/NavigationLink/NavigationLink";
 import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { Link } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 
 const Header = () => {
   const { user, logOutUser } = useContext(AuthContext);
+
   const handelLogOut = () => {
     logOutUser()
       .then(() => {
-        console.log("Log Out Successful");
+        toast("Log Out Successful");
       })
       .catch((error) => {
         console.error(error.message);
@@ -45,6 +47,7 @@ const Header = () => {
           <NavigationLink to="/login">Login</NavigationLink>
         )}
       </div>
+      <Toaster></Toaster>
     </nav>
   );
 };
