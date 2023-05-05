@@ -42,6 +42,10 @@ const Registration = () => {
     const photoUrl = form.photoUrl.value;
     const password = form.password.value;
 
+    if (password.length < 6) {
+      setErrorMessage("Password must be 6 character.");
+      return;
+    }
     // create user
     createUser(email, password)
       .then((result) => {
@@ -57,7 +61,12 @@ const Registration = () => {
       })
       .catch((error) => {
         console.error(error.message);
-        setErrorMessage(error.message);
+        if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+          setErrorMessage("This Email Already Used!");
+          return;
+        } else {
+          setErrorMessage(error.message);
+        }
       });
   };
   return (
@@ -66,7 +75,10 @@ const Registration = () => {
       <div>
         {successMessage && (
           <p className="text-green-600 px-5 py-3 border border-green-600 text-center text-xl my-5">
-            {successMessage} <Link to="/login" className="underline text-2xl">Go to Login</Link>
+            {successMessage}{" "}
+            <Link to="/login" className="underline text-2xl">
+              Go to Login
+            </Link>
           </p>
         )}
         {errorMessage && (

@@ -96,7 +96,13 @@ const Login = () => {
       })
       .catch((error) => {
         console.error(error.message);
-        setErrorMessage(error.message);
+        if (error.message === "Firebase: Error (auth/wrong-password).") {
+          setErrorMessage("Wrong Password! Please try again.");
+        } else if (error.message === "Firebase: Error (auth/user-not-found).") {
+          setErrorMessage("User can't found! Please try again.");
+        } else {
+          setErrorMessage(error.message);
+        }
       });
   };
 

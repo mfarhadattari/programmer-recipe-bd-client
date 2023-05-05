@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const RecipeCard = ({ recipe }) => {
   return (
     <div className="card bg-base-100 shadow-xl">
-      <figure>
-        <LazyLoad offset={100} threshold={0.95}>
+      <figure className="w-full">
+        <LazyLoad offset={100} threshold={0.95} className="w-full">
           <img
             src={recipe.img_url}
             alt={recipe.foodName}
